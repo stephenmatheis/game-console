@@ -1,0 +1,185 @@
+.game-console {
+    position: relative;
+    height: 740px;
+    width: 450px;
+    background-color: crimson;
+    border-radius: 20px 20px 80px 20px;
+    box-shadow: 0 0 0 10px black;
+
+    .top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 40px;
+        border-bottom: solid 8px black;
+
+        .left,
+        .right {
+            width: 45px;
+            height: 100%;
+        }
+
+        .left {
+            border-right: solid 8px black;
+        }
+
+        .right {
+            border-left: solid 8px black;
+        }
+    }
+
+    .bezel {
+        height: 375px;
+        width: 100%;
+        padding-inline: 40px;
+        padding-top: 20px;
+        padding-bottom: 15px;
+
+        .screen {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            background-color: #524346;
+            border-radius: 10px 10px 40px 10px;
+            border: solid 8px black;
+            padding: 20px 40px;
+
+            .bars {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                padding-bottom: 15px;
+
+                .left,
+                .right {
+                    height: 7px;
+                    background-color: black;
+                    border-radius: 7px;
+                }
+
+                .left {
+                    width: 175px;
+                }
+
+                .middle {
+                    display: flex;
+                    justify-content: space-between;
+                    gap: 7px;
+
+                    .dot {
+                        height: 7px;
+                        width: 7px;
+                        border-radius: 50%;
+                        background-color: black;
+                    }
+                }
+
+                .right {
+                    width: 50px;
+                }
+            }
+
+            .display {
+                height: 100%;
+                width: 100%;
+                background-color: #6e8690;
+                border-radius: 10px;
+                border: solid 8px black;
+            }
+        }
+    }
+
+    .grill {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 0px 40px;
+
+        .bar {
+            flex: 1;
+            height: 7px;
+            border-radius: 7px;
+            background-color: black;
+        }
+
+        .vertical {
+            display: flex;
+            justify-content: space-between;
+            gap: 7px;
+
+            .bar {
+                height: 20px;
+                width: 7px;
+            }
+        }
+    }
+
+    .controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-inline: 40px;
+        padding-top: 10px;
+
+        .dpad {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 190px;
+            width: 190px;
+            border-radius: 50%;
+            background-color: color-mix(in srgb, crimson 90%, black 15%);
+        }
+
+        .buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            transform: rotate(-45deg);
+            padding: 10px;
+
+            .button {
+                height: 50px;
+                width: 50px;
+                border-radius: 50%;
+                background-color: black;
+            }
+        }
+    }
+
+    .pills {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 50px;
+
+        .pill {
+            height: 50px;
+            width: 20px;
+            border-radius: 20px;
+            background-color: #524346;
+            transform: rotate(60deg);
+            border: solid 5px black;
+        }
+    }
+
+    .vent {
+        position: absolute;
+        bottom: 50px;
+        right: 25px;
+        display: flex;
+        gap: 15px;
+        transform: rotate(-45deg);
+
+        .bar {
+            height: 50px;
+            width: 10px;
+            background-color: black;
+            border-radius: 5px;
+        }
+    }
+}
