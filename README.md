@@ -1,3 +1,1 @@
-# fmic
-
-Scaffolded with `crepo`.
+# FMIC
