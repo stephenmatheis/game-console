@@ -2,10 +2,9 @@ import { useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import styles from './game-console.module.scss';
 
-function getTranslateY(gameConsole: HTMLDivElement | null, button: HTMLButtonElement | null): number {
-    if (!gameConsole || !button) return 0;
+function getTranslateY(gameConsole: HTMLDivElement | null): number {
+    if (!gameConsole) return 0;
 
-    const { height: buttonHeight } = button.getBoundingClientRect();
     const { y: gameConsoleY } = gameConsole.getBoundingClientRect();
 
     return 110 - gameConsoleY;
@@ -29,8 +28,8 @@ export function GameConsole() {
                     translateY: 0,
                 },
                 on: {
-                    scale: 3.25,
-                    translateY: getTranslateY(gameConsoleRef.current, buttonRef.current),
+                    scale: 2,
+                    translateY: getTranslateY(gameConsoleRef.current),
                 },
             }}
         >
@@ -78,13 +77,17 @@ export function GameConsole() {
                         className={styles.display}
                         animate={isOn ? 'on' : 'off'}
                         initial="off"
-                        transition={{ type: 'spring', stiffness: 300, damping: 20, delay: 0.9 }}
+                        transition={{ ease: [0.8, 0, 0.5, 1], duration: 0.25, delay: 0.7 }}
                         variants={{
                             off: {
-                                backgroundColor: '#6e8690',
+                                backgroundImage:
+                                    'linear-gradient(to bottom, white 50%, #6e8690 50%, #6e8690 50%, white 50%)',
+                                backgroundSize: '100% 0%',
                             },
                             on: {
-                                backgroundColor: '#ffffff',
+                                backgroundImage:
+                                    'linear-gradient(to bottom, white 50%, #6e8690 50%, #6e8690 50%, white 50%)',
+                                backgroundSize: '100% 100%',
                             },
                         }}
                     ></motion.div>
