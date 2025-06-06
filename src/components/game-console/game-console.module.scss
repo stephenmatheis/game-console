@@ -7,6 +7,11 @@
     box-shadow: 0 0 0 10px black;
     transform-origin: top;
 
+    @media screen and (max-width: 500px) {
+        height: 576px;
+        width: 350px;
+    }
+
     .on {
         cursor: pointer;
         position: absolute;
@@ -49,6 +54,11 @@
         padding-top: 20px;
         padding-bottom: 15px;
 
+        @media screen and (max-width: 500px) {
+            height: 250px;
+            padding-inline: 30px;
+        }
+
         .screen {
             display: flex;
             flex-direction: column;
@@ -57,6 +67,10 @@
             border-radius: 10px 10px 40px 10px;
             border: solid 8px black;
             padding: 20px 40px;
+
+            @media screen and (max-width: 500px) {
+                padding: 15px 30px;
+            }
 
             .bars {
                 display: flex;
@@ -101,6 +115,25 @@
                 background-repeat: no-repeat;
                 border-radius: 10px;
                 border: solid 8px black;
+
+                .loading {
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+
+                    .name {
+                        flex: 1;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+
+                    .message {
+                        padding: 20px;
+                        text-align: center;
+                        font-weight: 600;
+                    }
+                }
             }
         }
     }
@@ -111,7 +144,11 @@
         align-items: center;
         justify-content: space-between;
         gap: 20px;
-        padding: 0px 40px;
+        padding-inline: 40px;
+
+        @media screen and (max-width: 500px) {
+            padding-inline: 30px;
+        }
 
         .bar {
             flex: 1;
@@ -139,6 +176,11 @@
         padding-inline: 40px;
         padding-top: 10px;
 
+        @media screen and (max-width: 500px) {
+            padding-top: 5px;
+            padding-inline: 30px;
+        }
+
         .dpad {
             position: relative;
             display: flex;
@@ -148,6 +190,16 @@
             width: 190px;
             border-radius: 50%;
             background-color: color-mix(in srgb, crimson 90%, black 15%);
+
+            @media screen and (max-width: 500px) {
+                height: 120px;
+                width: 120px;
+
+                svg {
+                    height: 100px;
+                    width: 100px;
+                }
+            }
         }
 
         .buttons {
@@ -160,11 +212,21 @@
             background-color: color-mix(in srgb, crimson 90%, black 15%);
             border-radius: 50px;
 
+            @media screen and (max-width: 500px) {
+                gap: 15px;
+                padding: 10px;
+            }
+
             .button {
                 height: 50px;
                 width: 50px;
                 border-radius: 50%;
                 background-color: black;
+
+                @media screen and (max-width: 500px) {
+                    height: 40px;
+                    width: 40px;
+                }
             }
         }
     }
@@ -175,6 +237,10 @@
         justify-content: center;
         gap: 50px;
 
+        @media screen and (max-width: 500px) {
+            gap: 40px;
+        }
+
         .pill {
             height: 50px;
             width: 20px;
@@ -182,6 +248,11 @@
             background-color: #524346;
             transform: rotate(60deg);
             border: solid 5px black;
+
+            @media screen and (max-width: 500px) {
+                height: 40px;
+                width: 15px;
+            }
         }
     }
 
@@ -193,11 +264,23 @@
         gap: 15px;
         transform: rotate(-45deg);
 
+        @media screen and (max-width: 500px) {
+            bottom: 40px;
+            right: 15px;
+            gap: 10px;
+        }
+
         .bar {
             height: 50px;
             width: 10px;
             background-color: black;
             border-radius: 5px;
+
+            @media screen and (max-width: 500px) {
+                height: 40px;
+                width: 8px;
+                border-radius: 4px;
+            }
         }
     }
 }

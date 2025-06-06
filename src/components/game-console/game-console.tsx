@@ -7,7 +7,7 @@ function getTranslateY(gameConsole: HTMLDivElement | null): number {
 
     const { y: gameConsoleY } = gameConsole.getBoundingClientRect();
 
-    return 110 - gameConsoleY;
+    return 90 - gameConsoleY;
 }
 
 export function GameConsole() {
@@ -90,7 +90,42 @@ export function GameConsole() {
                                 backgroundSize: '100% 100%',
                             },
                         }}
-                    ></motion.div>
+                    >
+                        <div className={styles.loading}>
+                            <motion.div
+                                className={styles.name}
+                                animate={isOn ? 'on' : 'off'}
+                                initial="off"
+                                transition={{ ease: 'easeIn', duration: 0.25, delay: 3 }}
+                                variants={{
+                                    off: {
+                                        opacity: 0,
+                                    },
+                                    on: {
+                                        opacity: 1,
+                                    },
+                                }}
+                            >
+                                Friend Shaped!
+                            </motion.div>
+                            <motion.div
+                                className={styles.message}
+                                animate={isOn ? 'on' : 'off'}
+                                initial="off"
+                                transition={{ ease: 'easeIn', duration: 0.7, delay: 2 }}
+                                variants={{
+                                    off: {
+                                        opacity: 0,
+                                    },
+                                    on: {
+                                        opacity: 1,
+                                    },
+                                }}
+                            >
+                                Loading...
+                            </motion.div>
+                        </div>
+                    </motion.div>
                 </div>
             </div>
 
