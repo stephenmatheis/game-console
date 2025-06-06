@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'DepartureMono';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./assets/fonts/DepartureMono.woff') format('woff');
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -5,7 +12,7 @@
 }
 
 html {
-    font-family: monospace;
+    font-family: 'DepartureMono', monospace;
 }
 
 body {
