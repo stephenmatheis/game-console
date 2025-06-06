@@ -1,12 +1,24 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import styles from './game-console.module.scss';
 
+function getTranslateY(gameConsole: HTMLDivElement | null, button: HTMLButtonElement | null): number {
+    if (!gameConsole || !button) return 0;
+
+    const { height: buttonHeight } = button.getBoundingClientRect();
+    const { y: gameConsoleY } = gameConsole.getBoundingClientRect();
+
+    return 110 - gameConsoleY;
+}
+
 export function GameConsole() {
     const [isOn, setIsOn] = useState(false);
+    const gameConsoleRef = useRef<HTMLDivElement>(null);
+    const buttonRef = useRef<HTMLButtonElement>(null);
 
     return (
         <motion.div
+            ref={gameConsoleRef}
             className={styles['game-console']}
             animate={isOn ? 'on' : 'off'}
             initial="off"
@@ -17,18 +29,20 @@ export function GameConsole() {
                     translateY: 0,
                 },
                 on: {
-                    scale: 2.5,
-                    translateY: 275,
+                    scale: 3.25,
+                    translateY: getTranslateY(gameConsoleRef.current, buttonRef.current),
                 },
             }}
         >
             {/* On Button */}
             <motion.button
+                ref={buttonRef}
                 className={styles.on}
                 onClick={() => setIsOn((prev) => !prev)}
                 whileHover={{
-                    scale: 1.2,
-                    transition: { type: 'spring', stiffness: 300, damping: 20 },
+                    height: 15,
+                    top: -25,
+                    transition: { ease: 'easeOut', duration: 0.15 },
                 }}
                 animate={isOn ? 'on' : 'off'}
                 initial="off"
@@ -60,7 +74,20 @@ export function GameConsole() {
                         </div>
                         <div className={styles.right} />
                     </div>
-                    <div className={styles.display}></div>
+                    <motion.div
+                        className={styles.display}
+                        animate={isOn ? 'on' : 'off'}
+                        initial="off"
+                        transition={{ type: 'spring', stiffness: 300, damping: 20, delay: 0.9 }}
+                        variants={{
+                            off: {
+                                backgroundColor: '#6e8690',
+                            },
+                            on: {
+                                backgroundColor: '#ffffff',
+                            },
+                        }}
+                    ></motion.div>
                 </div>
             </div>
 
