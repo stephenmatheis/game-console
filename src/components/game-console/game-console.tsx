@@ -1,8 +1,47 @@
+import { useState } from 'react';
+import { motion } from 'motion/react';
 import styles from './game-console.module.scss';
 
 export function GameConsole() {
+    const [isOn, setIsOn] = useState(false);
+
     return (
-        <div className={styles['game-console']}>
+        <motion.div
+            className={styles['game-console']}
+            animate={isOn ? 'on' : 'off'}
+            initial="off"
+            transition={{ type: 'spring', stiffness: 300, damping: 20, delay: 0.3 }}
+            variants={{
+                off: {
+                    scale: 1,
+                    translateY: 0,
+                },
+                on: {
+                    scale: 2,
+                    translateY: 300,
+                },
+            }}
+        >
+            {/* On Button */}
+            <motion.button
+                className={styles.on}
+                onClick={() => setIsOn((prev) => !prev)}
+                whileHover={{
+                    scale: 1.2,
+                    transition: { type: 'spring', stiffness: 300, damping: 20 },
+                }}
+                animate={isOn ? 'on' : 'off'}
+                initial="off"
+                variants={{
+                    off: {
+                        translateX: 0,
+                    },
+                    on: {
+                        translateX: -30,
+                    },
+                }}
+            />
+
             {/* Top */}
             <div className={styles.top}>
                 <div className={styles.left} />
@@ -71,6 +110,6 @@ export function GameConsole() {
                 <div className={styles.bar} />
                 <div className={styles.bar} />
             </div>
-        </div>
+        </motion.div>
     );
 }
