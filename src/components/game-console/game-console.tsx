@@ -17,8 +17,8 @@ export function GameConsole() {
                     translateY: 0,
                 },
                 on: {
-                    scale: 2,
-                    translateY: 300,
+                    scale: 2.5,
+                    translateY: 275,
                 },
             }}
         >
