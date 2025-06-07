@@ -2,31 +2,31 @@ import { motion } from 'motion/react';
 import styles from './game-title.module.scss';
 import { useState } from 'react';
 
-// const audioCtx = new AudioContext();
+const audioCtx = new AudioContext();
 
-// function playTilePlunk(frequency = 300 + Math.random() * 80) {
-//     const osc = audioCtx.createOscillator();
-//     const gain = audioCtx.createGain();
+function playTilePlunk(frequency = 300 + Math.random() * 80) {
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
 
-//     osc.connect(gain);
-//     gain.connect(audioCtx.destination);
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
 
-//     // osc.type = 'triangle';
-//     osc.type = 'sine';
-//     osc.frequency.value = frequency;
+    // osc.type = 'triangle';
+    osc.type = 'sine';
+    osc.frequency.value = frequency;
 
-//     const now = audioCtx.currentTime;
+    const now = audioCtx.currentTime;
 
-//     gain.gain.setValueAtTime(0.2, now);
-//     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.125);
+    gain.gain.setValueAtTime(0.2, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.125);
 
-//     // gain.gain.setValueAtTime(0, now);
-//     // gain.gain.linearRampToValueAtTime(0.15, now + 0.05);
-//     // gain.gain.linearRampToValueAtTime(0.001, now + 0.4);
+    // gain.gain.setValueAtTime(0, now);
+    // gain.gain.linearRampToValueAtTime(0.15, now + 0.05);
+    // gain.gain.linearRampToValueAtTime(0.001, now + 0.4);
 
-//     osc.start(now);
-//     osc.stop(now + 0.1);
-// }
+    osc.start(now);
+    osc.stop(now + 0.1);
+}
 
 export function GameTitle() {
     const [start, setStart] = useState(false);
@@ -79,11 +79,11 @@ export function GameTitle() {
                                         rotate: r,
                                     }}
                                     transition={{ type: 'spring', stiffness: 300, damping: 15, delay: i * 0.1 }}
-                                    // onAnimationStart={() => {
-                                    //     setTimeout(() => {
-                                    //         playTilePlunk();
-                                    //     }, (i + 1.6) * 100);
-                                    // }}
+                                    onAnimationStart={() => {
+                                        setTimeout(() => {
+                                            playTilePlunk();
+                                        }, (i + 1.6) * 100);
+                                    }}
                                 >
                                     {letter}
                                 </motion.span>
@@ -92,22 +92,35 @@ export function GameTitle() {
                     </motion.div>
                     <div className={styles.buttons}>
                         <motion.div
-                            className={styles.left}
-                            initial={{ opacity: 0, scale: 0.5 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ type: 'spring', stiffness: 300, damping: 15, delay: 2.2 }}
-                            style={{ top: selected === 'New Game' ? 0 : 32 }}
+                            className={styles.arrows}
+                            initial="top"
+                            animate={selected === 'New Game' ? 'top' : 'bottom'}
+                            variants={{
+                                top: {
+                                    translateY: 0,
+                                },
+                                bottom: {
+                                    translateY: 32,
+                                },
+                            }}
+                            transition={{ type: 'spring', stiffness: 400, damping: 20 }}
                         >
-                            ◄
-                        </motion.div>
-                        <motion.div
-                            className={styles.right}
-                            initial={{ opacity: 0, scale: 0.5 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ type: 'spring', stiffness: 300, damping: 15, delay: 2.2 }}
-                            style={{ top: selected === 'New Game' ? 0 : 32 }}
-                        >
-                            ►
+                            <motion.div
+                                className={styles.right}
+                                initial={{ opacity: 0, scale: 0.5 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ type: 'spring', stiffness: 300, damping: 15, delay: 2.2 }}
+                            >
+                                ►
+                            </motion.div>
+                            <motion.div
+                                className={styles.left}
+                                initial={{ opacity: 0, scale: 0.5 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ type: 'spring', stiffness: 300, damping: 15, delay: 2.2 }}
+                            >
+                                ◄
+                            </motion.div>
                         </motion.div>
                         <motion.button
                             className={styles.start}
@@ -125,7 +138,7 @@ export function GameTitle() {
                             }}
                             whileHover={{
                                 color: 'rgb(255, 204, 0)',
-                                transition: { ease: 'easeInOut', duration: 0.2 },
+                                transition: {},
                             }}
                             onHoverStart={() => {
                                 setSelected('New Game');
@@ -149,7 +162,7 @@ export function GameTitle() {
                             }}
                             whileHover={{
                                 color: 'rgb(255, 204, 0)',
-                                transition: { ease: 'easeInOut', duration: 0.2 },
+                                transition: {},
                             }}
                             onHoverStart={() => {
                                 setSelected('Load');
