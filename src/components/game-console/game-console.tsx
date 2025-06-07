@@ -118,6 +118,7 @@ export function GameConsole() {
                     <div className={styles.bar} />
                     <div className={styles.bar} />
                     <div className={styles.bar} />
+                    <div className={styles.bar} />
                 </div>
                 <div className={styles.bar} />
             </div>

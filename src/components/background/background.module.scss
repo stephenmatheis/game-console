@@ -15,11 +15,12 @@
     .ground {
         flex: 1;
         background-color: mediumspringgreen;
+        border-top: solid 10px black;
     }
-
 
     .dirt {
         flex: 2;
-        background-color: brown;
+        background-color: saddlebrown;
+        border-top: solid 10px black;
     }
 }

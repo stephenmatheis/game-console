@@ -2,44 +2,41 @@ import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import styles from './game-title.module.scss';
 
-const audioCtx = new AudioContext();
+// const audioCtx = new AudioContext();
 
-function playTilePlunk(frequency = 300 + Math.random() * 80) {
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
+// function playTilePlunk(frequency = 300 + Math.random() * 80) {
+//     const osc = audioCtx.createOscillator();
+//     const gain = audioCtx.createGain();
 
-    osc.connect(gain);
-    gain.connect(audioCtx.destination);
+//     osc.connect(gain);
+//     gain.connect(audioCtx.destination);
 
-    // osc.type = 'triangle';
-    osc.type = 'sine';
-    osc.frequency.value = frequency;
+//     // osc.type = 'triangle';
+//     osc.type = 'sine';
+//     osc.frequency.value = frequency;
 
-    const now = audioCtx.currentTime;
+//     const now = audioCtx.currentTime;
 
-    gain.gain.setValueAtTime(0.2, now);
-    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.125);
+//     gain.gain.setValueAtTime(0.2, now);
+//     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.125);
 
-    // gain.gain.setValueAtTime(0, now);
-    // gain.gain.linearRampToValueAtTime(0.15, now + 0.05);
-    // gain.gain.linearRampToValueAtTime(0.001, now + 0.4);
+//     // gain.gain.setValueAtTime(0, now);
+//     // gain.gain.linearRampToValueAtTime(0.15, now + 0.05);
+//     // gain.gain.linearRampToValueAtTime(0.001, now + 0.4);
 
-    osc.start(now);
-    osc.stop(now + 0.1);
-}
+//     osc.start(now);
+//     osc.stop(now + 0.1);
+// }
 
 export function GameTitle() {
-    const [start, setStart] = useState(false);
     const [selected, setSelected] = useState<number>(0);
 
     useEffect(() => {
-        if (!start) return;
-
         function arrowControls(event: KeyboardEvent) {
             if (event.key === 'ArrowDown') {
                 event.preventDefault();
                 console.log('ArrowDown');
-                playTilePlunk(300 + Math.random() * 80);
+                // playTilePlunk(300 + Math.random() * 80);
 
                 setSelected((prev) => {
                     const next = ++prev;
@@ -52,7 +49,7 @@ export function GameTitle() {
             if (event.key === 'ArrowUp') {
                 event.preventDefault();
                 console.log('ArrowUp');
-                playTilePlunk(300 + Math.random() * 80);
+                // playTilePlunk(300 + Math.random() * 80);
 
                 setSelected((prev) => {
                     const next = --prev;
@@ -76,7 +73,7 @@ export function GameTitle() {
         return () => {
             window.removeEventListener('keydown', arrowControls);
         };
-    }, [start]);
+    }, []);
 
     return (
         <div className={styles['game-title']}>
@@ -123,11 +120,11 @@ export function GameTitle() {
                                 rotate: r,
                             }}
                             transition={{ type: 'spring', stiffness: 300, damping: 15, delay: i * 0.1 }}
-                            onAnimationStart={() => {
-                                setTimeout(() => {
-                                    playTilePlunk();
-                                }, (i + 1.6) * 100);
-                            }}
+                            // onAnimationStart={() => {
+                            //     setTimeout(() => {
+                            //         playTilePlunk();
+                            //     }, (i + 1.6) * 100);
+                            // }}
                         >
                             {letter}
                         </motion.span>
@@ -168,9 +165,6 @@ export function GameTitle() {
                 </motion.div>
                 <motion.button
                     className={styles.start}
-                    onClick={() => {
-                        setStart(true);
-                    }}
                     initial={{ opacity: 0, scale: 0.5 }}
                     animate={{
                         opacity: 1,
@@ -192,9 +186,6 @@ export function GameTitle() {
                 </motion.button>
                 <motion.button
                     className={styles.restart}
-                    onClick={() => {
-                        setStart(false);
-                    }}
                     initial={{ opacity: 0, scale: 0.5 }}
                     animate={{
                         opacity: 1,
