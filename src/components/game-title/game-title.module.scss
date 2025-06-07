@@ -1,0 +1,89 @@
+.game-title {
+    user-select: none;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 0 1px rgb(58, 93, 168);
+    border-radius: 5px;
+
+    .name {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-weight: 600;
+        padding-top: 20px;
+
+        .opening {
+            --color: #f1f1f3;
+            --shadow-color: rgb(58, 93, 168);
+            --accent-color: rgb(27, 44, 93);
+            --pos-size: 1px;
+            --neg-size: -1px;
+
+            font-size: 22px;
+            color: var(--color);
+            text-shadow: -2px 2px 0 var(--accent-color), var(--neg-size) var(--neg-size) 0 var(--shadow-color),
+                var(--pos-size) var(--neg-size) 0 var(--shadow-color),
+                var(--neg-size) var(--pos-size) 0 var(--shadow-color),
+                var(--pos-size) var(--pos-size) 0 var(--shadow-color);
+
+            span {
+                display: inline-block;
+            }
+        }
+
+        .pokemon {
+            --color: rgb(255, 203, 3);
+            --shadow-color: rgb(58, 93, 168);
+            --accent-color: rgb(27, 44, 93);
+            --pos-size: 2px;
+            --neg-size: -2px;
+
+            font-size: 40px;
+            transform: translate(-23px, -20px);
+            text-shadow: -4px 3px 0 var(--accent-color), var(--neg-size) var(--neg-size) 0 var(--shadow-color),
+                var(--pos-size) var(--neg-size) 0 var(--shadow-color),
+                var(--neg-size) var(--pos-size) 0 var(--shadow-color),
+                var(--pos-size) var(--pos-size) 0 var(--shadow-color);
+
+            span {
+                position: relative;
+                display: inline-block;
+                color: var(--color);
+            }
+        }
+    }
+
+    .message {
+        padding-bottom: 20px;
+        text-align: center;
+        font-weight: 600;
+    }
+}
+
+.buttons {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 40px;
+
+    button {
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: 600;
+
+        &.start {
+            color: seagreen;
+        }
+
+        &.restart {
+            color: crimson;
+        }
+    }
+}

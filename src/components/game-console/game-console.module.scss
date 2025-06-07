@@ -122,10 +122,82 @@
                     flex-direction: column;
 
                     .name {
+                        --pos-size: 2px;
+                        --neg-size: -1px;
+
                         flex: 1;
                         display: flex;
+                        flex-direction: column;
                         align-items: center;
                         justify-content: center;
+
+                        text-align: center;
+                        font-weight: 600;
+
+                        .opening {
+                            font-size: 28px;
+                            color: white;
+                            text-shadow: 4px 2px 0 #000, var(--neg-size) var(--neg-size) 0 #000,
+                                var(--pos-size) var(--neg-size) 0 #000, var(--neg-size) var(--pos-size) 0 #000,
+                                var(--pos-size) var(--pos-size) 0 #000;
+                        }
+
+                        .pokemon {
+                            --pos-size: 2px;
+                            --neg-size: -2px;
+
+                            font-size: 40px;
+                            transform: translateX(-23px);
+                            text-shadow: -4px 3px 0 rgb(27, 44, 93), var(--neg-size) var(--neg-size) 0 rgb(58, 93, 168),
+                                var(--pos-size) var(--neg-size) 0 rgb(58, 93, 168),
+                                var(--neg-size) var(--pos-size) 0 rgb(58, 93, 168),
+                                var(--pos-size) var(--pos-size) 0 rgb(58, 93, 168);
+
+                            span {
+                                position: relative;
+                                display: inline-block;
+                                color: rgb(255, 203, 3);
+
+                                &:nth-child(1) {
+                                    // transform: translate(46px, 10px) rotate(-12deg);
+                                    font-size: 70px;
+                                    z-index: 0;
+                                }
+
+                                &:nth-child(2) {
+                                    // transform: translate(32px, 3px) rotate(-10deg);
+                                    font-size: 44px;
+                                    z-index: 1;
+                                }
+
+                                &:nth-child(3) {
+                                    // transform: translate(24px, 4px) rotate(-8deg);
+                                    font-size: 60px;
+                                }
+
+                                &:nth-child(4) {
+                                    // transform: translate(16px, -8px) rotate(-4deg);
+                                    font-size: 50px;
+                                    z-index: 1;
+                                }
+
+                                &:nth-child(5) {
+                                    // transform: translate(12px, 2px) rotate(4deg);
+                                    font-size: 55px;
+                                }
+
+                                &:nth-child(6) {
+                                    // transform: translate(8px, 1px) rotate(9deg);
+                                    font-size: 44px;
+                                    z-index: 1;
+                                }
+
+                                &:nth-child(7) {
+                                    // transform: translateY(10px) rotate(12deg);
+                                    font-size: 60px;
+                                }
+                            }
+                        }
                     }
 
                     .message {

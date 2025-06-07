@@ -91,40 +91,66 @@ export function GameConsole() {
                             },
                         }}
                     >
-                        <div className={styles.loading}>
-                            <motion.div
-                                className={styles.name}
-                                animate={isOn ? 'on' : 'off'}
-                                initial="off"
-                                transition={{ ease: 'easeIn', duration: 0.25, delay: 3 }}
-                                variants={{
-                                    off: {
-                                        opacity: 0,
-                                    },
-                                    on: {
-                                        opacity: 1,
-                                    },
-                                }}
-                            >
-                                Friend Shaped!
-                            </motion.div>
-                            <motion.div
-                                className={styles.message}
-                                animate={isOn ? 'on' : 'off'}
-                                initial="off"
-                                transition={{ ease: 'easeIn', duration: 0.7, delay: 2 }}
-                                variants={{
-                                    off: {
-                                        opacity: 0,
-                                    },
-                                    on: {
-                                        opacity: 1,
-                                    },
-                                }}
-                            >
-                                Loading...
-                            </motion.div>
-                        </div>
+                        {isOn && (
+                            <div className={styles.loading}>
+                                <motion.div
+                                    className={styles.name}
+                                    // animate={isOn ? 'on' : 'off'}
+                                    // initial="off"
+                                    // transition={{ ease: 'easeIn', duration: 0.25, delay: 3 }}
+                                    // variants={{
+                                    //     off: {
+                                    //         opacity: 0,
+                                    //     },
+                                    //     on: {
+                                    //         opacity: 1,
+                                    //     },
+                                    // }}
+                                >
+                                    <div className={styles.opening}>Definitely Not</div>
+                                    <div className={styles.pokemon}>
+                                        {[
+                                            { letter: 'P', x: 46, y: 10, r: -12 },
+                                            { letter: 'o', x: 32, y: 3, r: -10 },
+                                            { letter: 'K', x: 24, y: 4, r: -8 },
+                                            { letter: 'é', x: 16, y: -8, r: -4 },
+                                            { letter: 'M', x: 12, y: 2, r: 4 },
+                                            { letter: 'o', x: 8, y: 1, r: 9 },
+                                            { letter: 'N', x: 0, y: 10, r: 12 },
+                                        ].map(({ letter, x, y, r }, i) => (
+                                            <motion.span
+                                                key={i}
+                                                initial={{ translateX: -600, translateY: 0, rotate: 0 }}
+                                                animate={{
+                                                    translateX: x,
+                                                    translateY: y,
+                                                    rotate: r,
+                                                }}
+                                                transition={{ type: 'spring', stiffness: 100, damping: 20 }}
+                                            >
+                                                {letter}
+                                            </motion.span>
+                                        ))}
+                                    </div>
+                                </motion.div>
+                                <motion.div
+                                    className={styles.message}
+                                    animate={isOn ? 'on' : 'off'}
+                                    initial="off"
+                                    transition={{ ease: 'easeIn', duration: 0.7, delay: 2 }}
+                                    variants={{
+                                        off: {
+                                            opacity: 0,
+                                        },
+                                        on: {
+                                            opacity: 1,
+                                        },
+                                    }}
+                                >
+                                    Loading...
+                                </motion.div>
+                            </div>
+                        )}
                     </motion.div>
                 </div>
             </div>
