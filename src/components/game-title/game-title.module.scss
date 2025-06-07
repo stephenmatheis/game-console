@@ -24,9 +24,15 @@
                 display: inline-block;
 
                 &.normal {
-                    --color: deepskyblue;
-                    --shadow-color: royalblue;
-                    --accent-color: mediumblue;
+                    // Blue
+                    // --color: deepskyblue;
+                    // --shadow-color: royalblue;
+                    // --accent-color: mediumblue;
+
+                    // Red
+                    --color: salmon;
+                    --shadow-color: brown;
+                    --accent-color: maroon;
                     --pos-size: 1px;
                     --neg-size: -1px;
 
@@ -39,7 +45,8 @@
                 }
 
                 &.emphasize {
-                    --color: salmon;
+                    // Darker red
+                    --color: tomato;
                     --shadow-color: brown;
                     --accent-color: maroon;
                     --pos-size: 1px;
@@ -79,29 +86,60 @@
     }
 
     .buttons {
+        position: relative;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         width: 100%;
-        padding: 20px 0px;
 
         button {
             --color: #f1f1f3;
-            --shadow-color: royalblue;
-            --accent-color: royalblue;
+            --shadow-color: rgb(38, 62, 132);
+            --accent-color: rgb(38, 62, 132);
             --pos-size: 1px;
             --neg-size: -1px;
 
             cursor: pointer;
+            height: 32px;
             font-size: 24px;
             color: var(--color);
             text-shadow: 3px 1px 0 var(--accent-color), var(--neg-size) var(--neg-size) 0 var(--shadow-color),
                 var(--pos-size) var(--neg-size) 0 var(--shadow-color),
                 var(--neg-size) var(--pos-size) 0 var(--shadow-color),
                 var(--pos-size) var(--pos-size) 0 var(--shadow-color);
-
             font-weight: 600;
+        }
+
+        .left,
+        .right {
+            --color: rgb(255, 204, 0);
+            --shadow-color: rgb(58, 93, 168);
+            --accent-color: rgb(38, 62, 132);
+            --pos-size: 1px;
+            --neg-size: -1px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            height: 32px;
+            font-size: 24px;
+            color: var(--color);
+            text-shadow: -2px 2px 0 var(--accent-color), var(--neg-size) var(--neg-size) 0 var(--shadow-color),
+                var(--pos-size) var(--neg-size) 0 var(--shadow-color),
+                var(--neg-size) var(--pos-size) 0 var(--shadow-color),
+                var(--pos-size) var(--pos-size) 0 var(--shadow-color);
+        }
+
+        .left {
+            top: 0;
+            right: 42px;
+        }
+
+        .right {
+            top: 0;
+            left: 45px;
         }
     }
 
