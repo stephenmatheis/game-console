@@ -1,6 +1,6 @@
+import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import styles from './game-title.module.scss';
-import { useState } from 'react';
 
 const audioCtx = new AudioContext();
 
@@ -30,7 +30,53 @@ function playTilePlunk(frequency = 300 + Math.random() * 80) {
 
 export function GameTitle() {
     const [start, setStart] = useState(false);
-    const [selected, setSelected] = useState<'New Game' | 'Load'>('New Game');
+    const [selected, setSelected] = useState<number>(0);
+
+    useEffect(() => {
+        if (!start) return;
+
+        function arrowControls(event: KeyboardEvent) {
+            if (event.key === 'ArrowDown') {
+                event.preventDefault();
+                console.log('ArrowDown');
+                playTilePlunk(300 + Math.random() * 80);
+
+                setSelected((prev) => {
+                    const next = ++prev;
+
+                    if (next > 1) return 1;
+                    return next;
+                });
+            }
+
+            if (event.key === 'ArrowUp') {
+                event.preventDefault();
+                console.log('ArrowUp');
+                playTilePlunk(300 + Math.random() * 80);
+
+                setSelected((prev) => {
+                    const next = --prev;
+
+                    if (next < 0) return 0;
+                    return next;
+                });
+            }
+
+            //  else if (event.key === 'Enter') {
+            //     if (selected === 'New Game') {
+            //         setStart(true);
+            //     } else {
+            //         setStart(false);
+            //     }
+            // }
+        }
+
+        window.addEventListener('keydown', arrowControls);
+
+        return () => {
+            window.removeEventListener('keydown', arrowControls);
+        };
+    }, [start]);
 
     return (
         <>
@@ -94,7 +140,7 @@ export function GameTitle() {
                         <motion.div
                             className={styles.arrows}
                             initial="top"
-                            animate={selected === 'New Game' ? 'top' : 'bottom'}
+                            animate={selected === 0 ? 'top' : 'bottom'}
                             variants={{
                                 top: {
                                     translateY: 0,
@@ -141,7 +187,7 @@ export function GameTitle() {
                                 transition: {},
                             }}
                             onHoverStart={() => {
-                                setSelected('New Game');
+                                setSelected(0);
                             }}
                         >
                             New Game
@@ -165,7 +211,7 @@ export function GameTitle() {
                                 transition: {},
                             }}
                             onHoverStart={() => {
-                                setSelected('Load');
+                                setSelected(1);
                             }}
                         >
                             Load
