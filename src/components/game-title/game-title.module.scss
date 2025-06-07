@@ -3,8 +3,8 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 0 0 1px rgb(58, 93, 168);
     border-radius: 5px;
+    padding: 20px 0;
 
     .name {
         flex: 1;
@@ -14,36 +14,57 @@
         justify-content: center;
         text-align: center;
         font-weight: 600;
-        padding-top: 20px;
 
         .opening {
-            --color: #f1f1f3;
-            --shadow-color: rgb(58, 93, 168);
-            --accent-color: rgb(27, 44, 93);
-            --pos-size: 1px;
-            --neg-size: -1px;
-
-            font-size: 22px;
-            color: var(--color);
-            text-shadow: -2px 2px 0 var(--accent-color), var(--neg-size) var(--neg-size) 0 var(--shadow-color),
-                var(--pos-size) var(--neg-size) 0 var(--shadow-color),
-                var(--neg-size) var(--pos-size) 0 var(--shadow-color),
-                var(--pos-size) var(--pos-size) 0 var(--shadow-color);
+            display: flex;
+            align-items: center;
+            gap: 2ch;
 
             span {
                 display: inline-block;
+
+                &.normal {
+                    --color: deepskyblue;
+                    --shadow-color: royalblue;
+                    --accent-color: mediumblue;
+                    --pos-size: 1px;
+                    --neg-size: -1px;
+
+                    font-size: 20px;
+                    color: var(--color);
+                    text-shadow: -1px 2px 0 var(--accent-color), var(--neg-size) var(--neg-size) 0 var(--shadow-color),
+                        var(--pos-size) var(--neg-size) 0 var(--shadow-color),
+                        var(--neg-size) var(--pos-size) 0 var(--shadow-color),
+                        var(--pos-size) var(--pos-size) 0 var(--shadow-color);
+                }
+
+                &.emphasize {
+                    --color: salmon;
+                    --shadow-color: brown;
+                    --accent-color: maroon;
+                    --pos-size: 1px;
+                    --neg-size: -1px;
+
+                    font-size: 20px;
+                    color: var(--color);
+                    text-shadow: -1px 2px 0 var(--accent-color), var(--neg-size) var(--neg-size) 0 var(--shadow-color),
+                        var(--pos-size) var(--neg-size) 0 var(--shadow-color),
+                        var(--neg-size) var(--pos-size) 0 var(--shadow-color),
+                        var(--pos-size) var(--pos-size) 0 var(--shadow-color);
+                    z-index: 1;
+                }
             }
         }
 
         .pokemon {
-            --color: rgb(255, 203, 3);
+            --color: rgb(255, 204, 0);
             --shadow-color: rgb(58, 93, 168);
-            --accent-color: rgb(27, 44, 93);
+            --accent-color: rgb(38, 62, 132);
             --pos-size: 2px;
             --neg-size: -2px;
 
             font-size: 40px;
-            transform: translate(-23px, -20px);
+            transform: translate(-23px, -25px);
             text-shadow: -4px 3px 0 var(--accent-color), var(--neg-size) var(--neg-size) 0 var(--shadow-color),
                 var(--pos-size) var(--neg-size) 0 var(--shadow-color),
                 var(--neg-size) var(--pos-size) 0 var(--shadow-color),
@@ -57,14 +78,41 @@
         }
     }
 
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 20px 0px;
+
+        button {
+            --color: #f1f1f3;
+            --shadow-color: royalblue;
+            --accent-color: royalblue;
+            --pos-size: 1px;
+            --neg-size: -1px;
+
+            cursor: pointer;
+            font-size: 24px;
+            color: var(--color);
+            text-shadow: 3px 1px 0 var(--accent-color), var(--neg-size) var(--neg-size) 0 var(--shadow-color),
+                var(--pos-size) var(--neg-size) 0 var(--shadow-color),
+                var(--neg-size) var(--pos-size) 0 var(--shadow-color),
+                var(--pos-size) var(--pos-size) 0 var(--shadow-color);
+
+            font-weight: 600;
+        }
+    }
+
     .message {
-        padding-bottom: 20px;
+        font-size: 11px;
+        color: crimson;
         text-align: center;
-        font-weight: 600;
     }
 }
 
-.buttons {
+.toolbar {
     position: absolute;
     bottom: 20px;
     left: 50%;
