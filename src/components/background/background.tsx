@@ -117,14 +117,14 @@ export function Background() {
             <div className={styles.mountains}>
                 {/* Back */}
                 <div className={styles.back}>
-                    <MountainDualSinglePeakSnow className={styles.leftest} />
-                    <MountainStandardSnow className={styles.lefter} />
-                    <MountainWideSnow className={styles.left} />
+                    <MountainDualSinglePeakSnow className={styles.left} />
+                    <MountainStandardSnow className={styles.right} />
                 </div>
 
                 {/* Middle */}
                 <div className={styles.middle}>
                     <MountainLarge className={styles.main} />
+                    <MountainWideSnow className={styles.left} />
                     <MountainStandardBorder className={styles.right} />
                 </div>
 

@@ -38,55 +38,46 @@
         }
 
         .back {
-            .leftest {
-                transform: translateX(calc(-50% - 1000px));
-                height: 250px;
-            }
-
             .left {
-                transform: translateX(calc(-50% - 400px));
-                height: 300px;
-            }
-
-            .lefter {
-                transform: translateX(calc(-50% - 720px));
-                height: 300px;
+                transform: translateX(calc(-50% - 290px));
+                height: 80px;
             }
 
             .right {
-                transform: translateX(calc(-50% + 400px));
-                height: 700px;
-                filter: brightness(1.1);
+                transform: translateX(calc(-50% + 330px));
+                height: 60px;
             }
         }
 
         .middle {
+            .left {
+                transform: translateX(calc(-50% - 140px));
+                height: 120px;
+            }
+
             .main {
                 transform: translateX(-50%);
-                height: 600px;
+                height: 200px;
             }
 
             .right {
-                transform: translateX(calc(-50% + 140px));
-                height: 250px;
+                transform: translateX(calc(-50% + 50px));
+                height: 80px;
             }
         }
 
         .front {
-            .left {
-                transform: translateX(calc(-50% - 400px));
-            }
-
             .right {
-                transform: translateX(calc(-50% + 600px));
+                transform: translateX(calc(-50% + 180px));
+                height: 100px;
             }
         }
     }
 
     .plains {
-        height: 200px;
+        height: 300px;
         width: 100%;
-        background-color: green;
+        background-color: #d8d8e4;
     }
 
     .middleground {
