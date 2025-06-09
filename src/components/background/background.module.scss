@@ -15,18 +15,15 @@
     }
 
     .mountains {
-        position: absolute;
-        bottom: 0px;
-        left: 50%;
-        transform: translateX(-50%);
-        height: 100%;
+        position: relative;
+        height: fit-content;
         width: 100%;
 
         .back,
         .middle,
         .front {
             position: absolute;
-            bottom: 0;
+            top: 0;
             left: 50%;
             transform: translateX(-50%);
             width: auto;
@@ -41,6 +38,11 @@
         }
 
         .back {
+            .leftest {
+                transform: translateX(calc(-50% - 1000px));
+                height: 250px;
+            }
+
             .left {
                 transform: translateX(calc(-50% - 400px));
                 height: 300px;
@@ -52,9 +54,9 @@
             }
 
             .right {
-                transform: translateX(calc(-50% + 600px));
-                height: 520px;
-                filter: brightness(.75) saturate(175%);
+                transform: translateX(calc(-50% + 400px));
+                height: 700px;
+                filter: brightness(1.1);
             }
         }
 
@@ -81,11 +83,17 @@
         }
     }
 
+    .plains {
+        height: 200px;
+        width: 100%;
+        background-color: green;
+    }
+
     .middleground {
         position: absolute;
         bottom: 0;
         right: 0;
-        border-color: transparent #436b7f #436b7f transparent;
+        border-color: transparent black black transparent;
         border-width: 100px 160px;
         border-width: 100px 160px;
         border-style: solid;
@@ -96,7 +104,7 @@
         position: absolute;
         bottom: 0;
         left: 0;
-        border-color: transparent transparent #043849 #043849;
+        border-color: transparent transparent black black;
         border-width: 180px 320px;
         border-width: 180px 320px;
         border-style: solid;
