@@ -5,7 +5,7 @@ export default function App() {
     return (
         <>
             <Background />
-            <GameConsole />
+            {/* <GameConsole /> */}
         </>
     );
 }

@@ -1,5 +1,7 @@
 .background {
-    position: absolute;
+    --border-size: 8px;
+
+    position: fixed;
     top: 0;
     left: 0;
     display: flex;
@@ -8,19 +10,96 @@
     height: 100dvh;
 
     .sky {
-        flex: 5;
-        background-color: deepskyblue;
-    }
-
-    .ground {
         flex: 1;
-        background-color: mediumspringgreen;
-        border-top: solid 10px black;
+        background-color: #65809a;
     }
 
-    .dirt {
-        flex: 2;
-        background-color: saddlebrown;
-        border-top: solid 10px black;
+    .mountains {
+        position: absolute;
+        bottom: 0px;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 100%;
+        width: 100%;
+
+        .back,
+        .middle,
+        .front {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: auto;
+            z-index: 1;
+
+            svg {
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                width: auto;
+            }
+        }
+
+        .back {
+            .left {
+                transform: translateX(calc(-50% - 400px));
+                height: 300px;
+            }
+
+            .lefter {
+                transform: translateX(calc(-50% - 720px));
+                height: 300px;
+            }
+
+            .right {
+                transform: translateX(calc(-50% + 600px));
+                height: 520px;
+                filter: brightness(.75) saturate(175%);
+            }
+        }
+
+        .middle {
+            .main {
+                transform: translateX(-50%);
+                height: 600px;
+            }
+
+            .right {
+                transform: translateX(calc(-50% + 140px));
+                height: 250px;
+            }
+        }
+
+        .front {
+            .left {
+                transform: translateX(calc(-50% - 400px));
+            }
+
+            .right {
+                transform: translateX(calc(-50% + 600px));
+            }
+        }
+    }
+
+    .middleground {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        border-color: transparent #436b7f #436b7f transparent;
+        border-width: 100px 160px;
+        border-width: 100px 160px;
+        border-style: solid;
+        z-index: 2;
+    }
+
+    .foreground {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        border-color: transparent transparent #043849 #043849;
+        border-width: 180px 320px;
+        border-width: 180px 320px;
+        border-style: solid;
+        z-index: 2;
     }
 }
